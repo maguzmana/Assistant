@@ -1,10 +1,14 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, render_template, jsonify
 import openai
 
 app = Flask(__name__)
 
 # Configura tu API key de OpenAI
 openai.api_key = 'your_openai_api_key'
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/ask', methods=['POST'])
 def ask():
